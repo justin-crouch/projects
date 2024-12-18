@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everything Must Go</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      background-color: #1b1b1b;
+    }
+    canvas {
+      padding: 0;
+      margin: auto;
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+
+  <script src="../../libraries/p5.min.js"></script>
+  <!-- <script src="libraries/addons/p5.sound.js"></script> -->
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <script>
+    function launchFullScreen() {
+      const elem = document.documentElement;
+
+      if (elem.requestFullscreen) {
+	elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) { /* Firefox */
+	elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+	elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE/Edge */
+	elem.msRequestFullscreen();
+      }
+    }
+  </script>
+
+</body>
+
+</html>
