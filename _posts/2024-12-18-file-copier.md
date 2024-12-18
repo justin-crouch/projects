@@ -6,4 +6,4 @@ description: Java program that finds files with a specific extension in a folder
 ---
 Java program that finds files with a specific extension in a folder and copies to a different folder 
 
-[Download Program](/projects/java_file_copier/ImageBackup.java)
+[Download Program](/projects/java_file_copier.zip)
