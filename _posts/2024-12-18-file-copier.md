@@ -6,4 +6,4 @@ description: Automatically  find and copy certain files from one directory to an
 ---
 Java program that finds files with a specific extension in a folder and copies to a different folder 
 
-[Download Program](/projects/java_file_copier.zip)
+[Download ZIP File](/projects/java_file_copier/java_file_copier.zip)

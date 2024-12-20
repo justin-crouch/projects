@@ -1,23 +1,18 @@
 import java.util.Scanner;
 import java.io.File;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
-public class ImageBackup
+public class FileBackup
 {
-  public static void searchAndCopy(File srcDirectory, File tarDirectory, String extension)
+  public static void search(File srcDirectory, String extension, ArrayList<File> fileList)
   {
     // Find all files with specifc extension
     File[] filesChildren = srcDirectory.listFiles((dir, name) -> name.endsWith("." + extension));
     for(File child : filesChildren)
     {
       System.out.println("Found File: " + child.getAbsolutePath());
-      try
-      {
-	Files.copy(child.toPath(), tarDirectory.toPath().resolve(child.getName()));
-      } catch(Exception e)
-      {
-	System.out.println(e);
-      }
+      fileList.add(child);
     }
     System.out.print((filesChildren.length==0)? ("No Files Of ." + extension + " Found In " + srcDirectory.toPath() + "\n") : "");
 
@@ -26,8 +21,31 @@ public class ImageBackup
     for(File child : dirsChildren)
     {
 //      System.out.println(child);
-      searchAndCopy(child, tarDirectory, extension);
+      search(child, extension, fileList);
     }
+  }
+
+  public static void copy(ArrayList<File> fileList, File tarDirectory)
+  {
+    int filesAmount = fileList.size();
+    int filesCopied = 0;
+    int filesFailed = 0;
+
+    for(File child : fileList){
+      try
+      {
+	Files.copy(child.toPath(), tarDirectory.toPath().resolve(child.getName()));
+	filesCopied += 1;
+      } catch(Exception e)
+      {
+	System.out.println(e);
+	filesFailed += 1;
+      }
+      
+      System.out.println("Progress: " + (filesCopied+filesFailed) + "/" + filesAmount + "(" + Math.ceil((double)(filesCopied+filesFailed)/filesAmount*100) + ")");
+    }
+    
+    System.out.println("\nCopy Complete!\tSuccessful: " + filesCopied + "\tFailed: " + filesFailed);
   }
 
   public static void main(String[] args)
@@ -38,6 +56,7 @@ public class ImageBackup
     String extension;
     File rootDir;
     File targetDir;
+    ArrayList<File> fileList = new ArrayList<File>();
 
     // Ask for source directory for searching
     do
@@ -64,6 +83,10 @@ public class ImageBackup
     System.out.print("Extension: ");
     extension = scnr.nextLine();
 
-    searchAndCopy(rootDir, targetDir, extension);
+    search(rootDir, extension, fileList);
+
+    System.out.println("\n\nFound: " + Integer.toString(fileList.size()) + " files with " + extension + " extension[s].");
+
+    copy(fileList, targetDir);
   }
 }
