@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: main
 title: Bones N Shit
-redirect: /projects/bones-n-shit/app.html
+redirect: /projects/bones_n_shit/app.html
 ---
