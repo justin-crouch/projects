@@ -1,5 +1,5 @@
 ---
-layout: main
+layout: post
 title: Bones N Shit
 description: Our dog NEEDS your help! Catch the falling bones from the sky. Be careful and stay away from the poop.
 redirect: https://toujours-prey.itch.io/bones-n-sht
