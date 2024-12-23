@@ -4,6 +4,9 @@
 
   <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
 
+  {% if page.redirect %}
+    <meta http-equiv="refresh" content="0; URL={{ page.redirect }}">
+  {% endif %}
     <meta content="{{ site.title }}" property="og:site_name">
   {% if page.title %}
     <meta content="{{ page.title }}" property="og:title">
