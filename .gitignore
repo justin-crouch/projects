@@ -21,3 +21,8 @@ Gemfile.lock
 *.swp
 *~
 *.log
+
+# Exclude files from Tauri app
+node_modules
+dist
+src-tauri/target/
